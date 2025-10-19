@@ -1,4 +1,11 @@
 .mainPage {
+  height: 100%;
+  background-image: url("frogBackground.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.mainPage {
   padding: 100px;
   display: flex;
   flex-direction: column;
