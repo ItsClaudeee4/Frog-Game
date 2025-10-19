@@ -19,7 +19,7 @@ function MainPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="mainPage h-screen bg-[url('/frogBackground.png')] bg-cover bg-no-repeat bg-bottom">
+    <div className="mainPage  bg-[url('/frogBackground.png')] bg-cover bg-no-repeat bg-bottom">
       <div className="description">
         <img src="/frog war.png" alt="Frog War" />
         <p>

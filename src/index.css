@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @import "tailwindcss";
-body {
-  height: 100%;
-  background-image: url("frogBackground.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
-}
+
 html,
 body,
 #root,
