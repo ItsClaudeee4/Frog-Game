@@ -1,0 +1,12 @@
+.btn {
+  background: linear-gradient(
+    180deg,
+    rgba(93, 61, 31, 0.665) 0%,
+    rgba(123, 92, 76, 0.7) 100%
+  );
+  padding: 20px 25px;
+  font-size: 30px;
+  font-family: "Press Start 2P", system-ui;
+  box-shadow: 0px 6px 0px 0px #131314;
+  border-radius: 10px;
+}
