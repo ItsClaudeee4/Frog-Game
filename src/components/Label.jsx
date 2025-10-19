@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { useSnackbar } from "../contexts/SnackbarContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Label({ p, name, setName, color, setColor }) {
-  const { setPlayer } = useContext(PlayerContext);
+  const { player, setPlayer } = useContext(PlayerContext);
 
   const { handleSnackbarOpen } = useSnackbar();
 
@@ -68,32 +69,47 @@ export default function Label({ p, name, setName, color, setColor }) {
     }
   }
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(0);
+    if (player[0].ready == true && player[1].ready) {
+      navigate("/game");
+    }
+  }, [player]);
+
   return (
     <>
       <div
         id="label"
-        className="w-[25rem] p-8 flex flex-col gap-8 rounded-lg shadow-xl/20"
+        className="w-[25rem] p-[2rem] flex flex-col gap-[2rem] rounded-lg shadow-xl/20"
       >
         <h1 className="text-3xl text-gray-500 text-center">
           Player {p == "player_1" ? 1 : 2}
         </h1>
 
         <div>
-          <label htmlFor={p + "_input"} className="text-xl">
+          <label
+            htmlFor={p + "_input"}
+            className="text-3xl text-gray-500 font-semibold "
+          >
             Name:
           </label>
           <input
             type="text"
             id={p + "_input"}
-            className="w-full rounded-md p-[1rem] shadow-xl ease-in duration-300 focus:outline-0 focus:shadow-xl/30 mt-2"
+            style={{
+              boxShadow: "4px 4px #272727",
+            }}
+            className="text-gray-300 w-full rounded-md p-[1rem] ease-in duration-300 focus:outline-0 mt-2 border-2 border-[#272727]"
             value={p == "player_1" ? name[0] : name[1]}
             onChange={handleNameChange}
+            placeholder="Enter a name"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="" className="text-xl">
+          <label htmlFor="" className="text-3xl text-gray-500 font-semibold ">
             Color:
           </label>
           <div className="flex justify-evenly mt-2">
@@ -101,10 +117,13 @@ export default function Label({ p, name, setName, color, setColor }) {
               return (
                 <div
                   id={p + "_color " + c}
-                  className={`w-14 h-14 cursor-pointer rounded-xl duration-300 hover:scale-105 ${
+                  style={{
+                    boxShadow: "4px 4px #272727",
+                  }}
+                  className={`w-12 h-12 cursor-pointer rounded-lg border-2 border-[#272727] ease-in-out duration-300 hover:-translate-y-1 ${
                     (p == "player_1" && c == color[0]) ||
                     (p == "player_2" && c == color[1])
-                      ? `bg-${c}-500 shadow-xl shadow-${c}-500/50 ring-white ring-4`
+                      ? `bg-${c}-500`
                       : `bg-${c}-500/50`
                   }`}
                   onClick={handleColorChange}
@@ -117,7 +136,11 @@ export default function Label({ p, name, setName, color, setColor }) {
         <div className="flex justify-center">
           <button
             id={p + "_ready"}
-            className="cursor-pointer text-md p-[1rem] rounded-md duration-300 hover:scale-105 shadow-xl self-center"
+            style={{
+              border: "1px solid #272727",
+              boxShadow: "0 3px #272727",
+            }}
+            className="bg-[#624A35]/90 cursor-pointer text-md p-[1rem] rounded-md duration-300 hover:scale-105 self-center"
             onClick={handleReady}
           >
             Ready
